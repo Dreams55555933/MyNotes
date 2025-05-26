@@ -64,8 +64,9 @@ class MainActivity : ComponentActivity() {
                 Button(
                     {vm.addNote()},
                     modifier = Modifier.fillMaxWidth().padding(10.dp),
+                    enabled = !vm.text.isEmpty(),
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = Color(red = 134, green = 181, blue = 249)
+                        containerColor = Color(red = 2, green = 28, blue = 130, alpha = 255)
                     )
                 ) { Text("Добавить") }
             }
@@ -74,9 +75,6 @@ class MainActivity : ComponentActivity() {
                 Modifier
                     .fillMaxSize()
                     .background(Color(red = 231, green = 231, blue = 239))
-                    .statusBarsPadding()
-                    .navigationBarsPadding()
-                    .imePadding()
                     .padding(top = 40.dp)
                     .padding(innerPadding),
                 horizontalAlignment = Alignment.CenterHorizontally

@@ -1,9 +1,12 @@
 package ru.fomihykh.mynotes.viewmodel
 
 import android.app.Application
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import ru.fomihykh.mynotes.Note
@@ -15,6 +18,7 @@ class NotesViewModel(application: Application): ViewModel() {
     private val repository: NoteRepository
     var text by mutableStateOf("")
     var isError by mutableStateOf(false)
+    var lazyListState by mutableStateOf(0)
 
     init {
         val noteDb = NoteRoomDatabase.Companion.getInstance(application)
