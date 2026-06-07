@@ -5,13 +5,18 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Scaffold
@@ -60,15 +65,26 @@ class MainActivity : ComponentActivity() {
     fun Main(vm: NotesViewModel = viewModel()){
         val notes by vm.notes.observeAsState(listOf())
         Scaffold(
+
             bottomBar = {
-                Button(
-                    {vm.addNote()},
-                    modifier = Modifier.fillMaxWidth().padding(10.dp),
-                    enabled = !vm.text.isEmpty(),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color(red = 2, green = 28, blue = 130, alpha = 255)
-                    )
-                ) { Text("Добавить") }
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(60.dp)
+                        .windowInsetsPadding(WindowInsets.navigationBars), // <-- ЭТО ВАЖНО
+                    contentAlignment = Alignment.Center
+                ) {
+                    Button(
+                        {vm.addNote()},
+                        modifier = Modifier.fillMaxWidth().padding(10.dp),
+                        enabled = !vm.text.isEmpty(),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = Color(red = 2, green = 28, blue = 130, alpha = 255),
+                            contentColor = Color.White
+                        )
+                    ) { Text("Добавить") }
+                }
+
             }
         ) {innerPadding->
             Column(

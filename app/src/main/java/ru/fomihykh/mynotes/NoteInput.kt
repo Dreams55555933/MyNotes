@@ -34,6 +34,10 @@ fun NoteInput(vm: NotesViewModel){
             },
             shape = RoundedCornerShape(20.dp),
             colors = OutlinedTextFieldDefaults.colors(
+                focusedLabelColor = Color.Black,
+                unfocusedLabelColor = Color.Black,
+                focusedTextColor = Color.Black,
+                unfocusedTextColor = Color.Black,
                 unfocusedContainerColor = Color.White,
                 focusedContainerColor = Color.White,
                 unfocusedBorderColor = Color.White,
